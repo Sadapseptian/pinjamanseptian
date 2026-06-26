@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir Pengajuan Pinjaman Pratama</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f2f5f9;
+}
+
+.container{
+max-width:700px;
+margin:40px auto;
+background:white;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,.15);
+overflow:hidden;
+}
+
+.header{
+background:#0b63ce;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.header h1{
+font-size:30px;
+}
+
+.header h2{
+margin-top:10px;
+font-size:23px;
+}
+
+.header h3{
+margin-top:10px;
+font-size:26px;
+color:#ffd000;
+}
+
+.form{
+padding:30px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+font-size:15px;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+}
+
+textarea{
+height:80px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#0b63ce;
+color:white;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#084b9a;
+}
+
+#hasil{
+display:none;
+padding:30px;
+}
+
+.card{
+background:#eef6ff;
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+}
+
+.card h2{
+text-align:center;
+margin-bottom:20px;
+color:#0b63ce;
+}
+
+.data{
+padding:12px;
+border-bottom:1px solid #ccc;
+font-size:17px;
+}
+
+.data span{
+font-weight:bold;
+color:#0b63ce;
+}
+
+.sukses{
+text-align:center;
+font-size:22px;
+color:green;
+margin-bottom:20px;
+font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>~~~ FORMULIR ~~~</h1>
+<h2>~~~ PENGAJUAN ~~~</h2>
+<h3>PINJAMAN PRATAMA</h3>
+</div>
+
+<div class="form" id="formData">
+
+<div class="form-group">
+<label>1. Nama Lengkap</label>
+<input type="text" id="nama">
+</div>
+
+<div class="form-group">
+<label>2. Pekerjaan</label>
+<input type="text" id="pekerjaan">
+</div>
+
+<div class="form-group">
+<label>3. Gaji</label>
+<input type="text" id="gaji">
+</div>
+
+<div class="form-group">
+<label>4. Bank / No Rekening</label>
+<input type="text" id="rekening">
+</div>
+
+<div class="form-group">
+<label>5. Jumlah Pinjaman</label>
+<input type="text" id="pinjaman">
+</div>
+
+<div class="form-group">
+<label>6. Tingkat Pendidikan</label>
+
+<select id="pendidikan">
+<option>SMA / SMK</option>
+<option>D3</option>
+<option>S1</option>
+<option>S2</option>
+<option>S3</option>
+</select>
+
+</div>
+
+<div class="form-group">
+<label>7. Tujuan Pinjaman</label>
+<textarea id="tujuan"></textarea>
+</div>
+
+<div class="form-group">
+<label>8. Sering Berbelanja Online?</label>
+
+<select id="belanja">
+<option>Shopee</option>
+<option>TikTok Shop</option>
+<option>Keduanya</option>
+<option>Tidak Pernah</option>
+</select>
+
+</div>
+
+<button onclick="kirim()">Kirim Pengajuan</button>
+
+</div>
+
+
+<div id="hasil">
+
+<div class="sukses">
+✅ PENGAJUAN BERHASIL DIKIRIM
+</div>
+
+<div class="card">
+
+<h2>RINCIAN DATA PENGAJUAN</h2>
+
+<div style="
+margin-top:25px;
+padding:18px;
+background:#fff8e1;
+border:2px solid #ffc107;
+border-radius:10px;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+color:#b26a00;
+line-height:1.6;
+">
+📸 Silahkan <b>screenshot hasil rincian</b> dan kirimkan ke nomor
+<b>089523998178</b>.
+</div>
+
+<div class="data"><span>Nama :</span> <span id="hNama"></span></div>
+
+<div class="data"><span>Pekerjaan :</span> <span id="hPekerjaan"></span></div>
+
+<div class="data"><span>Gaji :</span> <span id="hGaji"></span></div>
+
+<div class="data"><span>Bank / Rekening :</span> <span id="hRekening"></span></div>
+
+<div class="data"><span>Jumlah Pinjaman :</span> <span id="hPinjaman"></span></div>
+
+<div class="data"><span>Pendidikan :</span> <span id="hPendidikan"></span></div>
+
+<div class="data"><span>Tujuan :</span> <span id="hTujuan"></span></div>
+
+<div class="data"><span>Belanja Online :</span> <span id="hBelanja"></span></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function kirim(){
+
+document.getElementById("hNama").innerHTML=
+document.getElementById("nama").value;
+
+document.getElementById("hPekerjaan").innerHTML=
+document.getElementById("pekerjaan").value;
+
+document.getElementById("hGaji").innerHTML=
+document.getElementById("gaji").value;
+
+document.getElementById("hRekening").innerHTML=
+document.getElementById("rekening").value;
+
+document.getElementById("hPinjaman").innerHTML=
+document.getElementById("pinjaman").value;
+
+document.getElementById("hPendidikan").innerHTML=
+document.getElementById("pendidikan").value;
+
+document.getElementById("hTujuan").innerHTML=
+document.getElementById("tujuan").value;
+
+document.getElementById("hBelanja").innerHTML=
+document.getElementById("belanja").value;
+
+document.getElementById("formData").style.display="none";
+
+document.getElementById("hasil").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
